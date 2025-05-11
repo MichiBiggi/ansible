@@ -1,5 +1,5 @@
 - name: Install Google Chrome on Windows
-  hosts: windows 
+  hosts: windows_clients
   tasks:
     - name: Install Chocolatey if not already installed
       win_chocolatey:
@@ -8,5 +8,5 @@
 
     - name: Install Google Chrome using Chocolatey
       win_chocolatey:
-        name: googlechrome
+        name: firefox
         state: present
