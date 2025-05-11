@@ -1,5 +1,16 @@
-- name: Install software using winget on Windows
-  hosts: windows  # Deine Windows-Gruppe oder spezifische Hosts
+ name: Install Chocolatey and software on Windows
+  hosts: windows  # Die Windows-Gruppe oder spezifische Hosts
   tasks:
-    - name: Install Firefox
-      win_command: winget install -e --id Mozilla.Firefox
+    - name: Install Chocolatey
+      win_command: |
+        Set-ExecutionPolicy Bypass -Scope Process -Force;
+        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12;
+        Invoke-WebRequest https://community.chocolatey.org/install.ps1 -OutFile install.ps1;
+        powershell -NoProfile -ExecutionPolicy Bypass -Command "& 'install.ps1'"
+      args:
+        creates: C:\ProgramData\chocolatey  # Überprüft, ob Chocolatey bereits installiert ist
+
+    - name: Install Google Chrome using Chocolatey
+      win_chocolatey:
+        name: googlechrome
+        state: present
