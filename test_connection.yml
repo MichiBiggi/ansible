@@ -1,0 +1,6 @@
+- name: Teste Verbindung zu Windows-Hosts
+  hosts: windows
+  gather_facts: yes
+  tasks:
+    - name: Zeige Systeminformationen
+      win_command: systeminfo
