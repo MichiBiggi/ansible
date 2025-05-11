@@ -1,12 +1,5 @@
-- name: Install Google Chrome on Windows
-  hosts: windows_clients
+- name: Install software using winget on Windows
+  hosts: windows  # Deine Windows-Gruppe oder spezifische Hosts
   tasks:
-    - name: Install Chocolatey if not already installed
-      win_chocolatey:
-        name: chocolatey
-        state: present
-
-    - name: Install Google Chrome using Chocolatey
-      win_chocolatey:
-        name: firefox
-        state: present
+    - name: Install Firefox
+      win_command: winget install -e --id Mozilla.Firefox
