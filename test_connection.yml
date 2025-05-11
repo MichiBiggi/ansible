@@ -1,5 +1,5 @@
 - name: Teste Verbindung zu Windows-Hosts
-  hosts: windows_clients
+  hosts: client1
   gather_facts: yes
   tasks:
     - name: Zeige Systeminformationen
