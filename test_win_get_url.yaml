@@ -15,7 +15,7 @@
     # Adobe Acrobat Reader
     - name: Download Acrobat Reader installer
       ansible.windows.win_get_url:
-        url: https://get.adobe.com/uk/reader/download?os=Windows+10&name=Reader+2025.001.20467+English+UK+Windows%2864Bit%29&lang=uk&nativeOs=Windows+10&accepted=cr&declined=mss&preInstalled=&site=landing
+        url: https://www.adobe.com/download/acrobat?promoid=2FDNCJN7&mv=other#
         dest: C:\Temp\acrobat_installer.exe
 
     - name: Install Adobe Acrobat Reader
