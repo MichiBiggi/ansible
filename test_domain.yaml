@@ -1,6 +1,6 @@
 ---
 - name: Windows in AD-Domäne aufnehmen
-  hosts: windows
+  hosts: windows_clients
   tasks:
 
     - name: Domäne joinen
