@@ -5,10 +5,10 @@
 
     - name: Domäne joinen
       win_domain_membership:
-        dns_domain_name: "firma.local"
+        dns_domain_name: "test.ansible"
         domain_admin_user: "{{ ansible_user }}"
         domain_admin_password: "{{ ansible_password }}"
-        hostname: "winclient01"
+        hostname: "DC"
         state: domain
       register: domain_state
 
