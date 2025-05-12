@@ -38,9 +38,9 @@
     # Greenshot via winget
     - name: Install Greenshot via winget
       ansible.windows.win_shell: |
-      winget install --id Greenshot.Greenshot --silent --accept-package-agreements --accept-source-agreements
-        register: greenshot_result
-        changed_when: "'already installed' not in greenshot_result.stdout"
+        winget install --id Greenshot.Greenshot --silent --accept-package-agreements --accept-source-agreements
+      register: greenshot_result
+      changed_when: "'already installed' not in greenshot_result.stdout"
 
     # PuTTY
     - name: Download PuTTY installer
