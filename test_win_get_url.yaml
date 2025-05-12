@@ -1,0 +1,10 @@
+- name: Download Chrome installer
+  ansible.windows.win_get_url:
+    url: https://dl.google.com/chrome/install/latest/chrome_installer.exe
+    dest: C:\Temp\chrome_installer.exe
+
+- name: Install Chrome
+  ansible.windows.win_package:
+    path: C:\Temp\chrome_installer.exe
+    arguments: /silent
+    state: present
