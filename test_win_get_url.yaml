@@ -39,12 +39,25 @@
       ansible.windows.win_get_url:
         url: https://github.com/greenshot/greenshot/releases/download/Greenshot-RELEASE-1.2.10.6/Greenshot-INSTALLER-1.2.10.6-RELEASE.exe
         dest: C:\Temp\greenshot_installer.exe
-    
+  
     - name: Install Greenshot silently
       ansible.windows.win_package:
         path: C:\Temp\greenshot_installer.exe
         arguments: /VERYSILENT
         state: present
+    
+    - name: Wait for Greenshot installation to complete
+      ansible.windows.win_shell: |
+        $process = Get-Process -Name "Greenshot" -ErrorAction SilentlyContinue
+        while ($process -ne $null) {
+            Start-Sleep -Seconds 5
+            $process = Get-Process -Name "Greenshot" -ErrorAction SilentlyContinue
+        }
+      register: greenshot_wait
+    
+    - name: Continue playbook after Greenshot installation
+      debug:
+        msg: "Greenshot installation completed and ready."
     
     # PuTTY
     - name: Download PuTTY installer
