@@ -20,6 +20,6 @@
 
     - name: Install Adobe Reader via MSI
       ansible.windows.win_shell: |
-        msiexec.exe /i "C:\Temp\pdf_xchange.msi" /VERYSILENT /NORESTART
+        msiexec.exe /i "C:\Temp\pdf_xchange.msi" /quiet /NORESTART
       args:
         executable: cmd
