@@ -37,7 +37,7 @@
 
     # Greenshot via winget
     - name: Install Greenshot via winget
-        ansible.windows.win_powershell: |
+      ansible.windows.win_powershell: |
         winget install -e --id Greenshot.Greenshot --silent --accept-package-agreements --accept-source-agreements
       register: greenshot_result
       changed_when: "'already installed' not in greenshot_result.stdout"
