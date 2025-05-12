@@ -1,5 +1,5 @@
 - name: Install FireFox
-  hosts: windows_clients
+  hosts: group_clients_windows
   tasks:
     - name: Download Firefox installer
       ansible.windows.win_get_url:
