@@ -1,0 +1,19 @@
+---
+- name: Windows in AD-Domäne aufnehmen
+  hosts: windows_clients
+  gather_facts: yes
+  tasks:
+    - name: Domain_Join
+      win_domain_membership:
+        dns_domain_name: "test_domain.local"
+        domain_admin_user: "{{ ansible_user }}"
+        domain_admin_password: "{{ ansible_password }}"
+        hostname: "{{ ansible_hostname }}"
+        state: domain
+      register: domain_state
+
+    - name: Restart(if_requiered)
+      win_reboot:
+        msg: "Restart in 5s."
+        pre_reboot_delay: 5
+      when: domain_state.reboot_required
