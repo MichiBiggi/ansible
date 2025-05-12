@@ -1,4 +1,4 @@
- name: Install Chocolatey and software on Windows
+ name: Install FireFox
   hosts: windows  # Die Windows-Gruppe oder spezifische Hosts
   tasks:
    - name: Download Firefox installer
