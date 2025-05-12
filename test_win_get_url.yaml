@@ -47,7 +47,7 @@
     
     - name: Install Greenshot silently
       ansible.windows.win_shell: |
-        Start-Process -FilePath "C:\Temp\greenshot_installer.exe" -ArgumentList "/VERYSILENT" -Wait
+        Start-Process -FilePath "C:\Temp\greenshot_installer.exe" -ArgumentList "/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP- /LOG=C:\Windows\Logs\Software\GreenShot-Install.log" -Wait
     
     - name: Wait for installer to finish
       ansible.windows.win_shell: |
