@@ -13,13 +13,13 @@
       when: not temp_folder.stat.exists
 
     # Adobe Acrobat Reader
-    - name: Download Acrobat Reader installer
+    - name: Download PDF XChange
       ansible.windows.win_get_url:
-        url: https://prod-rel-ffc-ccm.oobesaas.adobe.com/adobe-ffc-external/core/v1/wam/download?sapCode=APRO&productName=Acrobat&version=25.1&os=win&guid=00138723-c435-4cf8-be3f-19b17e89ffd8&contextParams=%7B%22component%22%3A%22cc-home%22%2C%22visitor_guid%22%3A%2279562619068077360092063794059277461001%22%2C%22campaign_id%22%3A%22ahome_redirection%7C2024-11-kaizenStrictSignIn%7C2024-11-kaizenStrictSignIn%22%2C%22browser%22%3A%22chrome%22%2C%22context_guid%22%3A%22fac87b76-aebb-40c3-b664-9179f26c3cee%22%2C%22variation_id%22%3A%22disabled%7Cdisabled%22%2C%22experience_id%22%3A%22%22%2C%22planCodeList%22%3A%22%22%2C%22detectAndLaunchPlanCodeList%22%3A%22apcc_direct_individual%7Capap_direct_individual%7Capro_direct_individual%7Cacro_direct_individual%7Cacrobat_pro_dc_sign_funnel_indiv_individual%7Cacrobat_pro_dc_sign_funnel_team_team%7Cacrobat_pro_dc_plus_sign_funnel_individual%7Cacrobat_pro_dc_plus_sign_funnel_team%7Cacrobat_pro_dc_with_advanced_e_sign_pdf_funnel_individual%7Cacrobat_pro_dc_plus_pdf_funnel_team%22%2C%22secondarySapcodeList%22%3A%22%22%2C%22Product_ID_Promoted%22%3A%22APRO%22%2C%22contextComName%22%3A%22ACom%3ACCH%22%2C%22contextSvcName%22%3A%22NO-CCD%22%2C%22contextOrigin%22%3A%22ACom%3ACCH%22%2C%22promocode%22%3A%222FDNCJN7%22%2C%22gpv%22%3A%22adobe.com%3Adownload%3Aacrobat%22%2C%22AMCV_9E1005A551ED61CA0A490D45%2540AdobeOrg%22%3A%22-2121179033%257CMCMID%257C79562619068077360092063794059277461001%257CMCAID%257CNONE%257CMCOPTOUT-1747058517s%257CNONE%257CMCAAMLH-1747656117%257C6%257CMCAAMB-1747656117%257Cj8Odv6LonN4r3an7LhD3WZrU1bUpAkFkkiY1ncBR96t2PTI%257CMCCIDH%257C-1912426919%257CvVersion%257C5.3.0%22%2C%22kaizenTrialDuration%22%3A7%7D&wamFeature=nuj-live&environment=prod&api_key=CCHomeWeb1
-        dest: C:\Temp\acrobat_installer.exe
+        url: https://www.pdf-xchange.de/DL/tracker10/editor-msi64-tracker.php
+        dest: C:\Temp\pdf_xchange.msi
 
-    - name: Install Adobe Acrobat Reader
+    - name: Install PDF XChange
       ansible.windows.win_package:
-        path: C:\Temp\acrobat_installer.exe
-        arguments: -sfx_nu /sALL /msi EULA_ACCEPT=YES
+        path: C:\Temp\pdf_xchange.msi
+        arguments: /VERYSILENT /NORESTART
         state: present
