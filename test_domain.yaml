@@ -5,8 +5,8 @@
 
     - name: Domäne joinen
       win_domain_membership:
-        dns_domain_name: "test.ansible.local"
-        domain_admin_user: "test\ansible"
+        dns_domain_name: test.ansible
+        domain_admin_user: "ansible@test"
         domain_admin_password: "insecure"
         hostname: "client2"
         state: domain
