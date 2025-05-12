@@ -64,7 +64,7 @@
         path: C:\Temp\vlc_installer.exe
         arguments: /S
         state: present
-	
+
     - name: Download PDF XChange
       ansible.windows.win_get_url:
         url: https://www.pdf-xchange.de/DL/tracker10/editor-msi64-tracker.php
