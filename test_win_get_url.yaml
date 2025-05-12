@@ -45,12 +45,7 @@
     
     - name: Wait for Greenshot installation to complete
       ansible.windows.win_shell: |
-        $process = Get-Process -Name "Greenshot" -ErrorAction SilentlyContinue
-        while ($process -ne $null) {
-            Start-Sleep -Seconds 5
-            $process = Get-Process -Name "Greenshot" -ErrorAction SilentlyContinue
-        }
-      register: greenshot_wait
+          Start-Sleep -Seconds 30
     
     - name: Continue playbook after Greenshot installation
       debug:
