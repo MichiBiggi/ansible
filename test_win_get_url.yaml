@@ -18,8 +18,8 @@
         url: https://www.pdf-xchange.de/DL/tracker10/editor-msi64-tracker.php
         dest: C:\Temp\pdf_xchange.msi
 
-    - name: Install PDF XChange
-      ansible.windows.win_package:
-        path: C:\Temp\pdf_xchange.msi
-        arguments: /VERYSILENT /NORESTART
-        state: present
+    - name: Install Adobe Reader via MSI
+      ansible.windows.win_shell: |
+        msiexec.exe /i "C:\Temp\pdf_xchange.msi" /VERYSILENT /NORESTART
+      args:
+        executable: cmd
