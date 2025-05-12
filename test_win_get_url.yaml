@@ -22,3 +22,62 @@
         path: C:\Temp\firefox_installer.msi
         arguments: /quiet
         state: present
+    
+    # Notepad++
+    - name: Download Notepad++ installer
+      ansible.windows.win_get_url:
+        url: https://github.com/notepad-plus-plus/notepad-plus-plus/releases/latest/download/npp.8.6.4.Installer.x64.exe
+        dest: C:\Temp\npp_installer.exe
+
+    - name: Install Notepad++
+      ansible.windows.win_package:
+        path: C:\Temp\npp_installer.exe
+        arguments: /S
+        state: present
+
+    # Greenshot
+    - name: Download Greenshot installer
+      ansible.windows.win_get_url:
+        url: https://get.greenshot.org/Greenshot-INSTALLER-1.2.10.6-RELEASE.exe
+        dest: C:\Temp\greenshot_installer.exe
+
+    - name: Install Greenshot
+      ansible.windows.win_package:
+        path: C:\Temp\greenshot_installer.exe
+        arguments: /VERYSILENT
+        state: present
+
+    # PuTTY
+    - name: Download PuTTY installer
+      ansible.windows.win_get_url:
+        url: https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.81-installer.msi
+        dest: C:\Temp\putty_installer.msi
+
+    - name: Install PuTTY
+      ansible.windows.win_package:
+        path: C:\Temp\putty_installer.msi
+        state: present
+
+    # VLC Media Player
+    - name: Download VLC installer
+      ansible.windows.win_get_url:
+        url: https://get.videolan.org/vlc/3.0.20/win64/vlc-3.0.20-win64.exe
+        dest: C:\Temp\vlc_installer.exe
+
+    - name: Install VLC
+      ansible.windows.win_package:
+        path: C:\Temp\vlc_installer.exe
+        arguments: /S
+        state: present
+
+    # Adobe Acrobat Reader
+    - name: Download Acrobat Reader installer
+      ansible.windows.win_get_url:
+        url: https://ardownload2.adobe.com/pub/adobe/reader/win/AcrobatDC/2300820412/AcroRdrDC2300820412_en_US.exe
+        dest: C:\Temp\acrobat_installer.exe
+
+    - name: Install Adobe Acrobat Reader
+      ansible.windows.win_package:
+        path: C:\Temp\acrobat_installer.exe
+        arguments: /sAll /rs /rps /msi EULA_ACCEPT=YES
+        state: present
