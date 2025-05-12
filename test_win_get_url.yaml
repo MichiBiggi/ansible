@@ -13,11 +13,6 @@
       when: not temp_folder.stat.exists
 
     # Adobe Acrobat Reader
-    - name: Download PDF XChange
-      ansible.windows.win_get_url:
-        url: https://www.pdf-xchange.de/DL/tracker10/editor-msi64-tracker.php
-        dest: C:\Temp\pdf_xchange.msi
-
     - name: Install Adobe Reader via MSI
       ansible.windows.win_shell: |
         msiexec.exe /i "C:\Temp\pdf_xchange.msi" /quiet /NORESTART
