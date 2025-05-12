@@ -1,4 +1,4 @@
-- name: Download Chrome installer
+- name: Download Firefox installer
   ansible.windows.win_get_url:
     url: https://download.mozilla.org/?product=firefox-msi-latest-ssl&os=win64&lang=de
     dest: C:\Temp\firefox_installer.msi
