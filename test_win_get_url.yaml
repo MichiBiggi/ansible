@@ -50,7 +50,7 @@
     # PuTTY
     - name: Download PuTTY installer
       ansible.windows.win_get_url:
-        url: https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.81-installer.msi
+        url: https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.83-installer.msi
         dest: C:\Temp\putty_installer.msi
 
     - name: Install PuTTY
@@ -61,7 +61,7 @@
     # VLC Media Player
     - name: Download VLC installer
       ansible.windows.win_get_url:
-        url: https://get.videolan.org/vlc/3.0.20/win64/vlc-3.0.20-win64.exe
+        url: https://ftp.fau.de/videolan/vlc/3.0.21/win64/vlc-3.0.21-win64.exe
         dest: C:\Temp\vlc_installer.exe
 
     - name: Install VLC
@@ -73,11 +73,11 @@
     # Adobe Acrobat Reader
     - name: Download Acrobat Reader installer
       ansible.windows.win_get_url:
-        url: https://ardownload2.adobe.com/pub/adobe/reader/win/AcrobatDC/2300820412/AcroRdrDC2300820412_en_US.exe
+        url: blob:https://get.adobe.com/fcbabff6-84c3-43a4-8244-8eb8e7689c7a
         dest: C:\Temp\acrobat_installer.exe
 
     - name: Install Adobe Acrobat Reader
       ansible.windows.win_package:
         path: C:\Temp\acrobat_installer.exe
-        arguments: /sAll /rs /rps /msi EULA_ACCEPT=YES
+        arguments: -sfx_nu /sALL /msi EULA_ACCEPT=YES
         state: present
