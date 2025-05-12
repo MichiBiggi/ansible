@@ -35,17 +35,12 @@
         arguments: /S
         state: present
 
-    # Greenshot
-    - name: Download Greenshot installer
-      ansible.windows.win_get_url:
-        url: https://github.com/greenshot/greenshot/releases/download/Greenshot-RELEASE-1.2.10.6/Greenshot-INSTALLER-1.2.10.6-RELEASE.exe
-        dest: C:\Temp\greenshot_installer.exe
-
-    - name: Install Greenshot
-      ansible.windows.win_package:
-        path: C:\Temp\greenshot_installer.exe
-        arguments: /VERYSILENT
-        state: present
+    # Greenshot via winget
+    - name: Install Greenshot via winget
+      ansible.windows.win_shell: |
+        winget install --id Greenshot.Greenshot --silent --accept-package-agreements --accept-source-agreements
+      register: greenshot_result
+      changed_when: "'already installed' not in greenshot_result.stdout"
 
     # PuTTY
     - name: Download PuTTY installer
