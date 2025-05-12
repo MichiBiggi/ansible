@@ -8,7 +8,7 @@
         dns_domain_name: "test_domain.local"
         domain_admin_user: "{{ ansible_user }}"
         domain_admin_password: "{{ ansible_password }}"
-        hostname: "test-dc01"
+        hostname: "DC"
         state: domain
       register: domain_state
 
