@@ -1,19 +1,19 @@
 ---
 - name: Windows in AD-Domäne aufnehmen
-  hosts: windows_clients
-  gather_facts: yes
+  hosts: windows
   tasks:
-    - name: Domain_Join
+
+    - name: Domäne joinen
       win_domain_membership:
-        dns_domain_name: "test_domain.local"
+        dns_domain_name: "firma.local"
         domain_admin_user: "{{ ansible_user }}"
         domain_admin_password: "{{ ansible_password }}"
-        hostname: "DC"
+        hostname: "winclient01"
         state: domain
       register: domain_state
 
-    - name: Restart(if_requiered)
+    - name: Neustart nach Domain-Join (wenn nötig)
       win_reboot:
-        msg: "Restart in 5s."
+        msg: "System wird neu gestartet, um der Domäne beizutreten."
         pre_reboot_delay: 5
       when: domain_state.reboot_required
