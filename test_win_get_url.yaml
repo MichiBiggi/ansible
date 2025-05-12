@@ -16,31 +16,10 @@
       ansible.windows.win_get_url:
         url: https://github.com/greenshot/greenshot/releases/download/Greenshot-RELEASE-1.2.10.6/Greenshot-INSTALLER-1.2.10.6-RELEASE.exe
         dest: C:\Temp\greenshot_installer.exe
-  
-    - name: Kill Greenshot if already running
-      ansible.windows.win_shell: |
-        Get-Process Greenshot -ErrorAction SilentlyContinue | Stop-Process -Force
-      ignore_errors: true
-    
+
     - name: Install Greenshot silently
       ansible.windows.win_shell: |
-        Start-Process -FilePath "C:\Temp\greenshot_installer.exe" -ArgumentList "/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP- /LOG=C:\Windows\Logs\Software\GreenShot-Install.log" -Wait
-    
-    - name: Wait for installer to finish
-      ansible.windows.win_shell: |
-        while (Get-Process | Where-Object { $_.ProcessName -like "greenshot*" }) {
-          Start-Sleep -Seconds 3
-        }
-    
-    - name: Confirm installation
-      ansible.windows.win_stat:
-        path: "C:\\Program Files\\Greenshot\\Greenshot.exe"
-      register: greenshot_installed
-    
-    - name: Report result
-      debug:
-        msg: "Greenshot wurde installiert!"
-      when: greenshot_installed.stat.exists
+        Start-Process -FilePath "C:\Temp\greenshot_installer.exe" -ArgumentList "/VERYSILENT /SUPPRESSMSGBOXES" -Wait
     
     # PuTTY
     - name: Download PuTTY installer
