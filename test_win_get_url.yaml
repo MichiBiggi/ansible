@@ -1,6 +1,17 @@
 - name: Install FireFox
   hosts: group_clients_windows
   tasks:
+    - name: Check if C:\Temp exists
+      ansible.windows.win_stat:
+        path: C:\Temp
+      register: temp_folder
+
+    - name: Create C:\Temp if it does not exist
+      ansible.windows.win_file:
+        path: C:\Temp
+        state: directory
+      when: not temp_folder.stat.exists
+  
     - name: Download Firefox installer
       ansible.windows.win_get_url:
         url: https://download.mozilla.org/?product=firefox-msi-latest-ssl&os=win64&lang=de
