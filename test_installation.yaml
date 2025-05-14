@@ -1,4 +1,4 @@
-- name: Install Software
+- name: Installation der Software
   hosts: group_clients_windows
   tasks:
     - name: Überprüfung, ob ein Temp Ordner existiert
