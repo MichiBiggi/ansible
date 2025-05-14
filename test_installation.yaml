@@ -1,4 +1,4 @@
-- name: Install FireFox
+- name: Install Software
   hosts: group_clients_windows
   tasks:
     - name: Check if C:\Temp exists
