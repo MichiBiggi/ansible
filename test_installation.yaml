@@ -1,12 +1,12 @@
 - name: Install Software
   hosts: group_clients_windows
   tasks:
-    - name: Check if C:\Temp exists
+    - name: Überprüfung, ob ein Temp Ordner existiert
       ansible.windows.win_stat:
         path: C:\Temp
       register: temp_folder
 
-    - name: Create C:\Temp if it does not exist
+    - name: Erstellung des Temp Ordners
       ansible.windows.win_file:
         path: C:\Temp
         state: directory
